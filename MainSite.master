@@ -1,0 +1,250 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="MainSite.master.cs" Inherits="site" %>
+
+<!DOCTYPE html>
+
+<html>
+<head runat="server">
+    <title></title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!---------------------------------Styles------------------------------->
+    <link  rel="stylesheet" href="/packages/siteCss.css"/>
+    <link href="/packages/bootstrap-5.2.0/css/bootstrap.css" rel="stylesheet" />
+    <link href="/packages/fontawesome-free-6.1.1/css/all.css" rel="stylesheet" />
+
+    <!---------------------------------Scripts------------------------------->
+    <script src="/packages/jquery-3.6.js"></script>
+    <script src="/packages/bootstrap-5.2.0/js/bootstrap.js"></script>
+    <script src="/packages/fontawesome-free-6.1.1/js/all.js"></script>
+
+
+    <style>
+    </style>
+
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+    
+</head>
+
+<body>
+    
+    <form id="form1" runat="server">
+       
+        <div class="row">
+           
+            <div class="container-fluid">
+                <!------------------------- Heading Section -------------------------->
+                <div class="col-12 animate1" id="mainheading">
+                    <header>
+                        <i class="fas fa-graduation-cap"></i> Student Information System <i class="fas fa-graduation-cap"></i>
+                    </header>
+                </div>
+
+                <!------------------------- Navigation Menu Section -------------------------->
+                <nav class="navbar navbar-expand" style="background-color: #7431F9; color: #FFFFFF">
+                    <div class="container-fluid">
+                        <strong class="navbar-brand">
+                            <a href="/Home.aspx"> S I S </a>
+                        </strong>
+                        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse pb-2 pt-2" id="navbarNav">
+                        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                            <li class="nav-item active">
+                                <a class="nav-link" href="/Home.aspx"><i class="fas fa-home"></i> Home <span class="sr-only">(current)</span></a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/contactus.aspx"><i class="fas fa-address-book"></i> Contact us</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/Notifications/notifications.aspx"><i class="fas fa-bell"></i> Notifications</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/feedback.aspx"><i class="fas fa-comment"></i> Feedback</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/feedbackStatus.aspx"><i class="fas fa-bell"></i> Status</a>
+                            </li>
+                        </ul>
+                        <asp:LoginView ID="LoginViewStudent" runat="server" ViewStateMode="Disabled">
+                            <AnonymousTemplate>
+                                <ul class="navbar-nav col-6 justify-content-end">
+                                    <asp:HyperLink ID="loginLink" runat="server" NavigateUrl="~/Login.aspx"
+                                        CssClass="btn btn-success"><i class="fas fa-sign-in-alt"></i> Login
+                                    </asp:HyperLink>
+                                </ul>
+                            </AnonymousTemplate>
+                            <LoggedInTemplate>
+                                <div class="navbar-nav col-6 justify-content-end">
+
+                                    <button type="button" class="btn btn-primary position-relative">
+                                        Welcome back,
+                                      <span class="top-0 start-100 translate-middle p-2 bg-success  rounded-circle">
+                                          <a href="/student/studentprofile.aspx" >
+                                              <asp:LoginName runat="server" CssClass="username" />
+                                          </a>
+                                    </button>
+                                    <asp:LoginStatus runat="server" LogoutAction="Redirect"
+                                        LogoutText='<i class="fas fa-sign-out-alt"></i>  Log off'
+                                        CssClass=" btn btn-danger" LogoutPageUrl="~/Login.aspx" />
+                                    </span>
+
+                                </div>
+                            </LoggedInTemplate>
+                        </asp:LoginView>
+                    </div>
+                    </div>
+                </nav>
+            </div>
+            <div class="container">
+                <div class="col-12">
+                    <marquee direction="left" scrollamount="20" onmouseover="this.stop();" onmouseout="this.start();">
+                        <label></label>
+                        <label>
+                            <asp:HyperLink ID="HyperLink1" runat="server" NavigateUrl="~/Notifications/scholarshipList.aspx"
+                                ForeColor="Black"> 
+                                   <strong class="animate2">
+                                       <h5><i class="fa-solid fa-cloud-arrow-down"></i> Scholarship Selection List! of the Students is live now... </h5> 
+                                   </strong> 
+                            </asp:HyperLink>
+                        </label>
+                        <label></label>
+                        <label>
+                            <asp:HyperLink ID="HyperLink2" runat="server" NavigateUrl="~/Notifications/Courses.aspx"
+                                ForeColor="Black"> 
+                                   <strong class="animate2">
+                                       <h5> <i class="fa-solid fa-cloud-arrow-down"></i> Courses List for the academic session 2021 - 2022 is live now...  </h5> 
+                                   </strong> 
+                            </asp:HyperLink>
+                        </label>
+                        <label></label>
+                        <label>
+                            <asp:HyperLink ID="HyperLink3" runat="server" NavigateUrl="~/feedback.aspx"
+                                ForeColor="Black"> 
+                                   <strong class="animate2">
+                                       <h5> <i class="fa-solid fa-cloud-arrow-down"></i> Post feedback about our system </h5> 
+                                   </strong> 
+                            </asp:HyperLink>
+                        </label>
+                        <label></label>
+                        <label>
+                            <asp:HyperLink ID="HyperLink4" runat="server" NavigateUrl="~/feedbackStatus.aspx"
+                                ForeColor="Black"> 
+                                   <strong class="animate2">
+                                       <h4> <i class="fa-solid fa-cloud-arrow-down"></i> Check Feedback Status... </h4> 
+                                   </strong> 
+                            </asp:HyperLink>
+                        </label>
+                        <label></label>
+                        
+                    </marquee>
+
+                </div>
+            </div>
+        </div>
+
+        
+        <!------------------------- Main Content Section -------------------------->
+      
+        <div class="container-fluid">
+            <asp:ContentPlaceHolder ID="MainContent" runat="server">
+            </asp:ContentPlaceHolder>
+        </div>
+        <!------------------------- Footer Section -------------------------->
+        <footer id="footer">
+
+            <div class="footer-top  pt-3 pb-3  mt-5">
+                <div class="container-fluid">
+                    <div class="row">
+
+                        <div class="col-lg-3 col-6 footer-links">
+                            <h4>Useful Links</h4>
+                            <hr / class="mt-2">
+                            <ul>
+                                <li><i class="bx bx-chevron-right"></i><a href="/Home.aspx">Home</a></li>
+                                <li><i class="bx bx-chevron-right"></i><a href="/contactus.aspx">Contact us</a></li>
+                                <li><i class="bx bx-chevron-right"></i><a href="Notifications/notifications.aspx">Notifications</a></li>
+                                <li><i class="bx bx-chevron-right"></i><a href="/feedback.aspx">Give us Feedback</a></li>
+                                <li><i class="bx bx-chevron-right"></i><a href="contactus.aspx">Our Team</a></li>
+                            </ul>
+                        </div>
+
+                        <div class="col-lg-3 col-6 footer-links">
+                            <h4>Our Services</h4>
+                            <hr / class="mt-2">
+                            <ul>
+                                <li><i class="bx bx-chevron-right"></i><a href="#">Web Design</a></li>
+                                <li><i class="bx bx-chevron-right"></i><a href="#">Web Development</a></li>
+                                <li><i class="bx bx-chevron-right"></i><a href="#">Product Management</a></li>
+                                <li><i class="bx bx-chevron-right"></i><a href="#">Marketing</a></li>
+                                <li><i class="bx bx-chevron-right"></i><a href="#">Graphic Design</a></li>
+                            </ul>
+                        </div>
+
+                        <div class="col-lg-3 col-6 footer-contact">
+                            <h4>Contact Us</h4>
+                            <hr / class="mt-2">
+                            <p>
+                                <i class="fas fa-phone"></i> +917889731878<br>
+                                <i class="fas fa-envelope-circle-check"></i><a href="mailto:insertemailhere@xyz.com"> ishratzargar11@gmail.com</a> <br> 
+                                <hr />
+                                <i class="fas fa-phone"></i> +919541507436<br>
+                                <i class="fas fa-envelope-circle-check"></i><a href="mailto:insertemailhere@xyz.com"> umariqbal140@gmail.com</a><br>  
+                                <hr />
+                                <i class="fas fa-phone"></i> +919797215363<br>
+                                <i class="fas fa-envelope-circle-check"></i><a href="mailto:insertemailhere@xyz.com"> Majidfayaz624@gmail.com</a><br>  
+                                <hr />
+                                <i class="fas fa-phone"></i> +917006291751<br>
+                                <i class="fas fa-envelope-circle-check"></i><a href="mailto:insertemailhere@xyz.com"> inayatwani8899@gmail.com</a><br> 
+                            </p>
+
+                        </div>
+
+                        <div class="col-lg-3 col-6 footer-info">
+                            <h4>About SIS</h4>
+                            <hr / class="mt-2">
+                            <p>
+                                Student Information System (SIS), is a management information system for 
+                                education establishments to manage student data. Student Information System is a Web 
+                                Application software which controls and manages the information of the students. It is 
+                                very helpful for students as well as the school authorities.
+                            </p>
+                            <div class="social-links mt-3">
+                                <a href="https://www.facebook.com/" class="card-link  socialLinks" target="_blank">
+                                    <i class="fa-brands fa-facebook fa-2x" style="color: dodgerblue"></i>
+                                </a>
+                                <a href="https://www.twitter.com/" class="card-link socialLinks" target="_blank">
+                                    <i class="fab fa-twitter fa-2x" style="color: deepskyblue"></i>
+                                </a>
+                                <a href="https://www.instagram.com/" class="card-link socialLinks" target="_blank">
+                                    <i class="fab fa-instagram fa-2x" style="color: #F24C58"></i>
+                                </a>
+                                <a href="https://www.github.com/" class="card-link socialLinks" target="_blank">
+                                    <i class="fab fa-github fa-2x" style="color: black"></i>
+                                </a>
+                                <a href="https://www.youtube.com/" class="card-link socialLinks" target="_blank">
+                                    <i class="fab fa-youtube fa-2x" style="color: red"></i>
+                                </a>
+                                <a href="https://www.linkedin.com/" class="card-link socialLinks" target="_blank">
+                                    <i class="fab fa-linkedin-in fa-2x" style="color: #0082CA"></i>
+                                </a>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="container-fluid footer-bottom pt-4 pb-4">
+                <div class="copyright">
+                    &copy; Copyright <strong><span>2022 SIS</span></strong>. All Rights Reserved
+                </div>
+            </div>
+        </footer>
+        <!-- End Footer -->
+    </form>
+
+</body>
+</html>
